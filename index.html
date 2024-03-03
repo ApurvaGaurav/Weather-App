@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEATHER APP</title>
+    <script
+      src="https://kit.fontawesome.com/402654dea6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chela+One&family=Lilita+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background-color: black;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        /* border: 2px solid black; */
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        height: 10%;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        display: flex;
+        background-color: white;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .navbar input {
+        width: 70%;
+        height: 50%;
+        border: none;
+        border-radius: 15px;
+        background-color: rgb(209, 236, 255);
+        color: black;
+        text-align: center;
+        font-size: 25px;
+      }
+
+      .navbar input::placeholder {
+        color: black;
+      }
+
+      .navbar button {
+        height: 60%;
+        margin-left: 7px;
+        width: 10%;
+        border-radius: 100%;
+        border: none;
+        background-color: rgb(209, 236, 255);
+      }
+      .navbar button:hover {
+        background-color: black;
+        color: wheat;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .navbar button:active {
+        background-color: black;
+        color: wheat;
+        cursor: pointer;
+      }
+
+      .contentBox {
+        background-color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        top: 51%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30%;
+        height: 60%;
+      }
+
+      #imgbox {
+        height: 40%;
+        width: 40%;
+        /* border: 2px solid red; */
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+
+      #image {
+        height: 100%;
+        width: 100%;
+      }
+
+      .img_Conditions {
+        margin-top: 10px;
+        /* border: 3px solid blue; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .weatherBody {
+        /* border: 4px solid green; */
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1.5rem;
+        height: 20%;
+        align-items: center;
+      }
+
+      #temperature {
+        font-size: 45px;
+        font-weight: bolder;
+        text-align: center;
+        font-family: "Lilita One", cursive;
+      }
+
+      #Wcondition {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        font-family: "Chela One", cursive;
+        /* font-family: 'Lilita One', cursive; */
+      }
+
+      .fa-droplet {
+        font-size: 40px;
+        margin-left: 15px;
+      }
+
+      .fa-wind {
+        font-size: 40px;
+        position: relative;
+        left: 30px;
+      }
+
+      #humiditybox {
+        position: relative;
+        right: 50px;
+      }
+
+      #humiditybox span {
+        font-size: 25px;
+        font-family: "Russo One", sans-serif;
+      }
+
+      #windspeedbox {
+        position: relative;
+        right: 15px;
+      }
+
+      #windspeedbox span {
+        font-size: 25px;
+        font-family: "Russo One", sans-serif;
+      }
+
+      .navmoveup {
+        top: 16%;
+      }
+
+      #humiditybox p {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      #windspeedbox p {
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <input type="text" placeholder="Search City" />
+        <button value="submit" id="search_btn">
+          <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="contentBox" hidden>
+        <div class="img_Conditions">
+          <div id="imgbox">
+            <img src="" alt="loading....." id="image" />
+          </div>
+          <div>
+            <p id="temperature"></p>
+            <p id="Wcondition"></p>
+          </div>
+        </div>
+
+        <div class="weatherBody">
+          <span class="logo"><i class="fa-solid fa-droplet"></i></span>
+          <div id="humiditybox">
+            <span></span>
+            <p>Humidity</p>
+          </div>
+
+          <span class="logo"><i class="fa-solid fa-wind"></i></span>
+          <div id="windspeedbox">
+            <span></span>
+            <p>Wind Speed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
